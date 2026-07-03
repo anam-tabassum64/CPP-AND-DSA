@@ -1,6 +1,10 @@
 # Data Structures and Algorithms Roadmap
 
+![Ultimate DSA Learning Pathway](../assets/dsa-roadmap.png)
+
 This roadmap is designed for coding interviews, competitive programming, GATE CSE, software engineering roles, and long-term problem-solving mastery.
+
+Use it as a visual curriculum map, a revision guide, and a topic checklist for interview and contest preparation.
 
 ## Roadmap At A Glance
 
