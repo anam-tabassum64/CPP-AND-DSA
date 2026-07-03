@@ -1,6 +1,33 @@
 # C++ Learning Roadmap
 
+![Master C++ Learning Pathway](../assets/roadmap.png)
+
 This roadmap is designed for learners preparing for DSA, competitive programming, GATE, software engineering interviews, and real-world C++ development.
+
+Use it as a curriculum, a revision checklist, and a reference map for building strong C++ problem-solving skill.
+
+## Roadmap At A Glance
+
+| Phase | Focus | Outcome |
+| --- | --- | --- |
+| Phase 1 | Fundamentals | Read, compile, and write core C++ confidently |
+| Phase 2 | Arrays and Strings | Solve the most common beginner DSA problems |
+| Phase 3 | Pointers and References | Understand memory, indirection, and parameter passing |
+| Phase 4 | Recursion | Build the base for backtracking and tree thinking |
+| Phase 5 | OOP | Design clean, reusable, and maintainable classes |
+| Phase 6 | STL | Solve problems faster with the standard library |
+| Phase 7 | File Handling | Persist and process data safely |
+| Phase 8 | Modern C++ | Write safer, cleaner, and more expressive code |
+| Phase 9 | Projects | Combine everything into portfolio-ready applications |
+
+## How To Use This Roadmap
+
+- Follow the phases in order because later phases depend on earlier ones
+- Treat each phase as a mastery checkpoint, not a time box
+- Solve problems immediately after learning a concept
+- Build small programs before moving to the next topic
+- Revisit the interview concepts section before mock interviews
+- Use the project phase to integrate multiple concepts into one codebase
 
 ## Phase 1: C++ Fundamentals
 
@@ -587,7 +614,7 @@ Phase 9 integrates everything into portfolio-grade work.
 
 ## Recommended Books
 
-- `C++ Primer` by Stanley B. Lippman, Josée Lajoie, and Barbara E. Moo
+- `C++ Primer` by Stanley B. Lippman, Josee Lajoie, and Barbara E. Moo
 - `The C++ Programming Language` by Bjarne Stroustrup
 - `Effective Modern C++` by Scott Meyers
 - `A Tour of C++` by Bjarne Stroustrup
@@ -683,4 +710,3 @@ Build a single polished application that combines modern C++, STL, file handling
 - Sample input and output files
 - Clear class diagrams or module notes
 - A short list of known limitations and future improvements
-
