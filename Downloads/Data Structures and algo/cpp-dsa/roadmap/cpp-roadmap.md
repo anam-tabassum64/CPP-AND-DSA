@@ -29,6 +29,18 @@ Use it as a curriculum, a revision checklist, and a reference map for building s
 - Revisit the interview concepts section before mock interviews
 - Use the project phase to integrate multiple concepts into one codebase
 
+## Detailed Phase Guides
+
+- Phase 1: `../cpp-DETAILED/phase-01-fundamentals/`
+- Phase 2: `../cpp-DETAILED/phase-02-arrays-and-strings/`
+- Phase 3: `../cpp-DETAILED/phase-03-pointers-and-references/`
+- Phase 4: `../cpp-DETAILED/phase-04-recursion/`
+- Phase 5: `../cpp-DETAILED/phase-05-oop/`
+- Phase 6: `../cpp-DETAILED/phase-06-stl/`
+- Phase 7: `../cpp-DETAILED/phase-07-file-handling/`
+- Phase 8: `../cpp-DETAILED/phase-08-modern-cpp/`
+- Phase 9: `../cpp-DETAILED/phase-09-projects/`
+
 ## Phase 1: C++ Fundamentals
 
 ### Learning Objectives
