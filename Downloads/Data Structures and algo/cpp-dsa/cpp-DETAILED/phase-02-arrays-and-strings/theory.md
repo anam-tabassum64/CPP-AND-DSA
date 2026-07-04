@@ -574,18 +574,464 @@ This is one reason arrays outperform many pointer-based data structures during t
 
 ---
 
-➡️ **End of Chapter 1 – Part 1**
+---
 
-**Next Part will cover:**
-- Array Declaration
-- Initialization (all types)
-- Traversal
-- Updating
-- Insertion
-- Deletion
-- Searching
-- Copying
-- Passing Arrays to Functions
-- Returning Arrays
-- Static vs Dynamic Arrays
-- Memory diagrams, examples, dry runs, interview notes, and complexities.
+# 📝 Array Declaration
+
+Array declaration tells the compiler to reserve a contiguous block of memory capable of storing multiple elements of the same data type.
+
+## Syntax
+
+```cpp
+datatype arrayName[size];
+```
+
+### Components
+
+| Component | Description |
+|-----------|-------------|
+| `datatype` | Type of elements stored |
+| `arrayName` | Name of the array |
+| `size` | Maximum number of elements |
+
+### Example
+
+```cpp
+int marks[5];
+```
+
+Explanation:
+
+- `int` → Every element is an integer.
+- `marks` → Name of the array.
+- `5` → Total capacity of the array.
+
+Memory allocated:
+
+```text
+Index
+
+0     1     2     3     4
+
++-----+-----+-----+-----+-----+
+|  ?  |  ?  |  ?  |  ?  |  ?  |
++-----+-----+-----+-----+-----+
+```
+
+Initially, local array elements contain **garbage values** unless initialized.
+
+---
+
+# ⚠ Rules for Declaring Arrays
+
+## Rule 1: Size must be positive
+
+✔ Correct
+
+```cpp
+int arr[10];
+```
+
+❌ Wrong
+
+```cpp
+int arr[-5];
+```
+
+---
+
+## Rule 2: Elements must have the same data type
+
+✔ Correct
+
+```cpp
+int arr[5];
+```
+
+❌ Wrong
+
+```cpp
+int arr[5]={10,'A',3.14};
+```
+
+---
+
+## Rule 3: Index starts from 0
+
+For an array of size `n`
+
+Valid indices are
+
+```text
+0 to n-1
+```
+
+Example
+
+```cpp
+int arr[5];
+```
+
+Valid
+
+```cpp
+arr[0]
+arr[1]
+arr[2]
+arr[3]
+arr[4]
+```
+
+Invalid
+
+```cpp
+arr[5]
+```
+
+Accessing an invalid index results in **Undefined Behaviour**.
+
+---
+
+# 📌 Types of Array Initialization
+
+There are several ways to initialize an array.
+
+---
+
+## 1. Complete Initialization
+
+Every element is initialized.
+
+```cpp
+int arr[5]={10,20,30,40,50};
+```
+
+Memory
+
+```text
++----+----+----+----+----+
+|10  |20  |30  |40  |50  |
++----+----+----+----+----+
+```
+
+---
+
+## 2. Partial Initialization
+
+```cpp
+int arr[5]={10,20};
+```
+
+Remaining elements become **0**.
+
+```text
++----+----+----+----+----+
+|10  |20  |0   |0   |0   |
++----+----+----+----+----+
+```
+
+---
+
+## 3. Zero Initialization
+
+```cpp
+int arr[5]={0};
+```
+
+Output
+
+```text
+0 0 0 0 0
+```
+
+---
+
+## 4. Empty Initialization
+
+```cpp
+int arr[5]{};
+```
+
+All elements become
+
+```text
+0
+```
+
+(C++11 onwards)
+
+---
+
+## 5. Size Inference
+
+Compiler automatically calculates the size.
+
+```cpp
+int arr[]={10,20,30,40,50};
+```
+
+Compiler creates
+
+```cpp
+int arr[5];
+```
+
+---
+
+# 📖 Accessing Array Elements
+
+Elements are accessed using their index.
+
+## Syntax
+
+```cpp
+arrayName[index]
+```
+
+Example
+
+```cpp
+int marks[5]={90,80,75,60,95};
+
+cout<<marks[0];
+cout<<marks[2];
+```
+
+Output
+
+```text
+90
+75
+```
+
+---
+
+# ⚙ Internal Working of Array Access
+
+Suppose
+
+```cpp
+int arr[5]={10,20,30,40,50};
+```
+
+Base Address
+
+```text
+1000
+```
+
+Need
+
+```cpp
+arr[3]
+```
+
+Compiler calculates
+
+```text
+1000+(3×4)
+
+=
+
+1012
+```
+
+Then reads
+
+```text
+1012
+```
+
+Value
+
+```text
+40
+```
+
+No searching is performed.
+
+---
+
+# 🧪 Dry Run
+
+```cpp
+int arr[]={5,10,15,20};
+
+cout<<arr[2];
+```
+
+Execution
+
+```text
+Step 1
+
+Array Created
+
++----+----+----+----+
+|5   |10  |15  |20  |
++----+----+----+----+
+
+Step 2
+
+Need arr[2]
+
+↓
+
+Address Calculated
+
+↓
+
+Read Value
+
+↓
+
+15 Printed
+```
+
+Output
+
+```text
+15
+```
+
+---
+
+# ⚠ Out of Bounds Access
+
+Consider
+
+```cpp
+int arr[5];
+
+cout<<arr[10];
+```
+
+This is **Undefined Behaviour**.
+
+Possible outcomes:
+
+- Program crashes.
+- Garbage value printed.
+- Works "sometimes" (dangerous).
+- Memory corruption.
+
+Never access beyond
+
+```text
+0
+
+to
+
+size-1
+```
+
+---
+
+# 💡 Best Practices
+
+- Always initialize arrays.
+- Never access invalid indices.
+- Use meaningful names.
+- Prefer `std::array` or `std::vector` in modern C++ when appropriate.
+- Avoid hardcoding indices repeatedly.
+
+---
+
+# ⚠ Common Mistakes
+
+### Mistake 1
+
+```cpp
+int arr[5];
+
+cout<<arr[5];
+```
+
+Reason:
+
+`arr[5]` is outside the valid range.
+
+Correct
+
+```cpp
+cout<<arr[4];
+```
+
+---
+
+### Mistake 2
+
+```cpp
+int arr[3];
+
+arr[3]=100;
+```
+
+Wrong because the highest valid index is
+
+```text
+2
+```
+
+---
+
+### Mistake 3
+
+```cpp
+int arr[5];
+
+cout<<arr[2];
+```
+
+If the array is not initialized, local variables contain garbage values.
+
+Correct
+
+```cpp
+int arr[5]={0};
+```
+
+---
+
+# 🧠 Interview Notes
+
+### Q1. Why does array indexing start from 0?
+
+Because the address of the first element is the base address itself:
+
+```
+Address = Base + (0 × Size)
+```
+
+---
+
+### Q2. Can we change the size of an array after declaration?
+
+No. The size of a built-in array is fixed at compile time.
+
+---
+
+### Q3. What happens if you access `arr[size]`?
+
+It causes **Undefined Behaviour** because the index is out of bounds.
+
+---
+
+# 📝 Revision Notes
+
+- Arrays have fixed size.
+- Index starts at 0.
+- Elements are accessed using indices.
+- Local arrays are not automatically initialized.
+- Accessing out-of-bounds elements is undefined behaviour.
+- Complete, partial, zero, and inferred-size initialization are common initialization methods.
+
+---
+
+# 📌 Key Takeaways
+
+- ✅ Arrays are declared using `datatype name[size]`.
+- ✅ Initialization can be complete, partial, zero, or inferred.
+- ✅ Array access uses direct address calculation.
+- ✅ Valid indices range from `0` to `size-1`.
+- ✅ Always initialize arrays and avoid out-of-bounds access.
