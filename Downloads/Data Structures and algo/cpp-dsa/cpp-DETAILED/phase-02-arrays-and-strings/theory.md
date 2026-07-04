@@ -1035,3 +1035,651 @@ It causes **Undefined Behaviour** because the index is out of bounds.
 - ✅ Array access uses direct address calculation.
 - ✅ Valid indices range from `0` to `size-1`.
 - ✅ Always initialize arrays and avoid out-of-bounds access.
+
+---
+
+# 🔄 Array Traversal
+
+## 📖 Introduction
+
+**Traversal** is the process of visiting each element of an array exactly once to perform a specific operation.
+
+Traversal is one of the most frequently performed operations on arrays and forms the basis for searching, sorting, updating, counting, filtering, and many other algorithms.
+
+Almost every algorithm involving arrays begins with traversal.
+
+---
+
+## 🎯 Learning Objectives
+
+After completing this topic, you will be able to:
+
+- Understand what traversal means.
+- Traverse arrays using different types of loops.
+- Print all array elements.
+- Modify elements while traversing.
+- Analyze traversal complexity.
+
+---
+
+## 🤔 Why Do We Need Traversal?
+
+Suppose an array stores marks of students.
+
+```cpp
+int marks[]={85,92,78,95,88};
+```
+
+To display all marks, should we write
+
+```cpp
+cout<<marks[0];
+cout<<marks[1];
+cout<<marks[2];
+cout<<marks[3];
+cout<<marks[4];
+```
+
+No.
+
+Imagine an array having 1,00,000 elements.
+
+Writing one statement for each element is impossible.
+
+Traversal solves this problem.
+
+---
+
+## 📜 Definition
+
+> Array Traversal is the process of visiting every element of an array exactly once in a sequential order.
+
+---
+
+## 🧠 Intuition
+
+Imagine checking attendance in a classroom.
+
+```text
+Student 1
+
+↓
+
+Student 2
+
+↓
+
+Student 3
+
+↓
+
+Student 4
+
+↓
+
+Student 5
+```
+
+The teacher visits every student exactly once.
+
+Similarly,
+
+```text
+arr[0]
+
+↓
+
+arr[1]
+
+↓
+
+arr[2]
+
+↓
+
+arr[3]
+
+↓
+
+arr[4]
+```
+
+Every element is visited exactly once.
+
+---
+
+## 🔄 Flow of Traversal
+
+```text
+Start
+
+↓
+
+Initialize i = 0
+
+↓
+
+Is i < Size ?
+
+↓
+
+Yes
+
+↓
+
+Process arr[i]
+
+↓
+
+i++
+
+↓
+
+Repeat
+
+↓
+
+No
+
+↓
+
+Stop
+```
+
+---
+
+## 📝 Traversal using For Loop
+
+The most common method.
+
+```cpp
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    int arr[]={10,20,30,40,50};
+
+    for(int i=0;i<5;i++)
+    {
+        cout<<arr[i]<<" ";
+    }
+
+    return 0;
+}
+```
+
+### Output
+
+```text
+10 20 30 40 50
+```
+
+---
+
+## 📝 Traversal using While Loop
+
+```cpp
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    int arr[]={10,20,30,40,50};
+
+    int i=0;
+
+    while(i<5)
+    {
+        cout<<arr[i]<<" ";
+        i++;
+    }
+}
+```
+
+Output
+
+```text
+10 20 30 40 50
+```
+
+---
+
+## 📝 Traversal using Do-While Loop
+
+```cpp
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    int arr[]={10,20,30,40,50};
+
+    int i=0;
+
+    do
+    {
+        cout<<arr[i]<<" ";
+        i++;
+    }
+    while(i<5);
+}
+```
+
+---
+
+## 📝 Traversal using Range-Based Loop
+
+Introduced in C++11.
+
+```cpp
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    int arr[]={10,20,30,40,50};
+
+    for(int x:arr)
+    {
+        cout<<x<<" ";
+    }
+}
+```
+
+Output
+
+```text
+10 20 30 40 50
+```
+
+---
+
+## 🧪 Dry Run
+
+```cpp
+int arr[]={4,8,12};
+
+for(int i=0;i<3;i++)
+{
+    cout<<arr[i];
+}
+```
+
+### Execution
+
+```text
+i=0
+
+↓
+
+Print arr[0]
+
+↓
+
+4
+
+↓
+
+i=1
+
+↓
+
+Print arr[1]
+
+↓
+
+8
+
+↓
+
+i=2
+
+↓
+
+Print arr[2]
+
+↓
+
+12
+
+↓
+
+Loop Ends
+```
+
+Output
+
+```text
+4 8 12
+```
+
+---
+
+## 📈 Time Complexity
+
+| Operation | Complexity |
+|-----------|------------|
+| Traversal | O(n) |
+
+Why?
+
+Every element is visited once.
+
+---
+
+## 💾 Space Complexity
+
+| Type | Complexity |
+|------|------------|
+| Auxiliary Space | O(1) |
+
+No extra memory is used.
+
+---
+
+# ✏️ Updating Array Elements
+
+## 📖 Introduction
+
+Updating means replacing an existing value with a new value.
+
+Unlike insertion or deletion, updating does not change the array size.
+
+---
+
+## 📜 Definition
+
+Updating is the process of modifying the value stored at a particular index.
+
+---
+
+## 📝 Syntax
+
+```cpp
+arr[index]=newValue;
+```
+
+---
+
+## Example
+
+```cpp
+int arr[]={10,20,30,40,50};
+
+arr[2]=100;
+```
+
+Before
+
+```text
+10 20 30 40 50
+```
+
+After
+
+```text
+10 20 100 40 50
+```
+
+---
+
+## 💻 Program
+
+```cpp
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    int arr[]={10,20,30,40,50};
+
+    arr[3]=999;
+
+    for(int x:arr)
+    {
+        cout<<x<<" ";
+    }
+}
+```
+
+Output
+
+```text
+10 20 30 999 50
+```
+
+---
+
+## 🧪 Dry Run
+
+Initially
+
+```text
+Index
+
+0 1 2 3 4
+
+Value
+
+10 20 30 40 50
+```
+
+Operation
+
+```cpp
+arr[3]=999;
+```
+
+Memory becomes
+
+```text
+10 20 30 999 50
+```
+
+Only one element changes.
+
+---
+
+## 📈 Complexity
+
+| Operation | Complexity |
+|-----------|------------|
+| Update | O(1) |
+
+Reason
+
+The address is calculated directly.
+
+---
+
+# ➕ Array Insertion
+
+## 📖 Introduction
+
+Arrays have fixed size.
+
+Therefore, insertion is not as simple as linked lists.
+
+To insert an element at a position, all elements after that position must be shifted one step to the right.
+
+---
+
+## 🤔 Why Shifting?
+
+Suppose
+
+```text
+10 20 30 40 50
+```
+
+Insert
+
+```text
+99
+```
+
+at index
+
+```text
+2
+```
+
+Result
+
+```text
+10 20 99 30 40 50
+```
+
+Notice
+
+30,40 and 50 moved one position ahead.
+
+---
+
+## 🔄 Flow
+
+```text
+Find Position
+
+↓
+
+Shift Elements Right
+
+↓
+
+Insert New Element
+
+↓
+
+Increase Size
+```
+
+---
+
+## 💻 Program
+
+```cpp
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    int arr[10]={10,20,30,40,50};
+
+    int size=5;
+
+    int pos=2;
+
+    int value=99;
+
+    for(int i=size;i>pos;i--)
+    {
+        arr[i]=arr[i-1];
+    }
+
+    arr[pos]=value;
+
+    size++;
+
+    for(int i=0;i<size;i++)
+    {
+        cout<<arr[i]<<" ";
+    }
+}
+```
+
+Output
+
+```text
+10 20 99 30 40 50
+```
+
+---
+
+## 🧪 Dry Run
+
+Initially
+
+```text
+10 20 30 40 50
+```
+
+Shift
+
+```text
+50 →
+
+40 →
+
+30 →
+```
+
+After shifting
+
+```text
+10 20 _ 30 40 50
+```
+
+Insert
+
+```text
+99
+```
+
+Final
+
+```text
+10 20 99 30 40 50
+```
+
+---
+
+## 📈 Complexity
+
+| Case | Complexity |
+|------|------------|
+| Beginning | O(n) |
+| Middle | O(n) |
+| End | O(1) (if space available) |
+
+---
+
+## ⚠ Common Mistakes
+
+❌ Forgetting to shift elements.
+
+❌ Shifting from left to right instead of right to left.
+
+❌ Not checking available capacity.
+
+---
+
+## 💡 Best Practices
+
+- Always validate the insertion position.
+- Ensure there is enough capacity.
+- Shift elements from the end towards the insertion point.
+- Update the logical size after insertion.
+
+---
+
+## 📝 Revision Notes
+
+- Traversal visits every element once.
+- Updating changes only the value at a given index.
+- Insertion requires shifting elements to the right.
+- Traversal complexity is **O(n)**.
+- Updating complexity is **O(1)**.
+- Insertion is generally **O(n)** due to shifting.
+
+---
+
+## 📌 Key Takeaways
+
+- ✅ Traversal is the foundation of most array algorithms.
+- ✅ Updating is a direct, constant-time operation.
+- ✅ Insertion in arrays is expensive because elements may need to be shifted.
+- ✅ Understanding traversal and insertion is essential before learning searching and sorting algorithms.
+
+---
