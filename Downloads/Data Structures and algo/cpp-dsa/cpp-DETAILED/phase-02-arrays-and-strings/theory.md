@@ -2049,3 +2049,311 @@ Passing an array to a function takes **O(1)** time because only the address is p
 - Passing Arrays: **O(1)**
 
 ---
+
+# 📚 Chapter 2: 2D Arrays & Multi-dimensional Arrays
+
+---
+
+# 📖 Introduction
+
+A **2D Array** is an array of arrays used to store data in the form of **rows and columns** (matrix). It extends the concept of a one-dimensional array and is useful for representing tables, matrices, game boards, images, and spreadsheets.
+
+A **Multi-dimensional Array** is an array having more than one dimension (2D, 3D, ...).
+
+---
+
+# 🎯 Why Do We Need 2D Arrays?
+
+Using a 1D array to represent tabular data is difficult.
+
+For example, marks of 3 students in 4 subjects:
+
+| Student | Math | Science | English | C++ |
+|---------|------|----------|----------|-----|
+| A | 90 | 85 | 88 | 91 |
+| B | 80 | 79 | 95 | 89 |
+| C | 75 | 92 | 81 | 86 |
+
+A 2D array stores this naturally.
+
+---
+
+# 📜 Declaration
+
+```cpp
+dataType arrayName[rows][columns];
+```
+
+Example
+
+```cpp
+int matrix[3][4];
+```
+
+---
+
+# 📝 Initialization
+
+```cpp
+int matrix[2][3]={
+    {1,2,3},
+    {4,5,6}
+};
+```
+
+Or
+
+```cpp
+int matrix[][3]={
+    {1,2,3},
+    {4,5,6}
+};
+```
+
+---
+
+# 💾 Memory Representation
+
+Although a 2D array looks like a table, it is stored in **contiguous memory** using **Row-Major Order**.
+
+```text
+Matrix
+
+1 2 3
+4 5 6
+
+Memory
+
++----+----+----+----+----+----+
+| 1  | 2  | 3  | 4  | 5  | 6  |
++----+----+----+----+----+----+
+```
+
+### Address Formula (Row-Major)
+
+```text
+Address = Base + ((Row × Number_of_Columns) + Column) × Size
+```
+
+---
+
+# 🔄 Traversing a 2D Array
+
+Use nested loops.
+
+```cpp
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    int arr[2][3]={
+        {1,2,3},
+        {4,5,6}
+    };
+
+    for(int i=0;i<2;i++)
+    {
+        for(int j=0;j<3;j++)
+        {
+            cout<<arr[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+}
+```
+
+Output
+
+```text
+1 2 3
+4 5 6
+```
+
+---
+
+# ✏️ Common Matrix Operations
+
+## Row-wise Traversal
+
+```cpp
+for(int i=0;i<rows;i++)
+    for(int j=0;j<cols;j++)
+        cout<<arr[i][j];
+```
+
+---
+
+## Column-wise Traversal
+
+```cpp
+for(int j=0;j<cols;j++)
+    for(int i=0;i<rows;i++)
+        cout<<arr[i][j];
+```
+
+---
+
+## Matrix Addition
+
+```cpp
+C[i][j]=A[i][j]+B[i][j];
+```
+
+---
+
+## Matrix Transpose
+
+Swap rows and columns.
+
+```text
+1 2 3
+
+4 5 6
+
+↓
+
+1 4
+
+2 5
+
+3 6
+```
+
+---
+
+## Matrix Multiplication
+
+For two matrices:
+
+```text
+A(m×n)
+
+×
+
+B(n×p)
+
+=
+
+C(m×p)
+```
+
+---
+
+# 📤 Passing 2D Arrays to Functions
+
+```cpp
+void display(int arr[][3],int rows)
+{
+    for(int i=0;i<rows;i++)
+    {
+        for(int j=0;j<3;j++)
+            cout<<arr[i][j]<<" ";
+        cout<<endl;
+    }
+}
+```
+
+> **Note:** The number of columns must be specified when passing a built-in 2D array.
+
+---
+
+# 🌍 Applications
+
+- Matrix calculations
+- Image processing
+- Sudoku solver
+- Chess board representation
+- Spreadsheet software
+- Game development
+- Scientific computing
+- Graph adjacency matrix
+
+---
+
+# 📈 Complexity
+
+| Operation | Time |
+|-----------|------|
+| Access Element | O(1) |
+| Traversal | O(rows × cols) |
+| Addition | O(rows × cols) |
+| Transpose | O(rows × cols) |
+| Matrix Multiplication | O(n³) *(Basic Algorithm)* |
+
+**Space Complexity:** `O(rows × cols)`
+
+---
+
+# 👍 Advantages
+
+- Easy representation of tabular data.
+- Fast random access using indices.
+- Contiguous memory improves cache performance.
+- Simple implementation.
+
+---
+
+# 👎 Disadvantages
+
+- Fixed size.
+- Insertion and deletion are expensive.
+- Wastage of memory if dimensions are overestimated.
+- Difficult to resize dynamically.
+
+---
+
+# 💡 Best Practices
+
+- Use nested loops for traversal.
+- Validate row and column indices.
+- Prefer `std::vector<vector<int>>` when size is dynamic.
+- Use meaningful variable names like `rows` and `cols`.
+
+---
+
+# 🧠 Interview Notes
+
+### Why are 2D arrays stored in Row-Major Order?
+
+Because C++ stores array elements row by row in contiguous memory.
+
+---
+
+### Difference between 1D and 2D Arrays
+
+| 1D Array | 2D Array |
+|-----------|-----------|
+| Stores data in one dimension | Stores data in rows and columns |
+| Single index | Two indices |
+| Simple list | Matrix/Table |
+
+---
+
+### Can a 2D array be passed to a function?
+
+✔ Yes, but the **column size must be known** for built-in arrays.
+
+---
+
+# 📝 Revision Notes
+
+- A 2D array is an array of arrays.
+- Elements are stored in **Row-Major Order**.
+- Traversal requires nested loops.
+- Matrix operations include addition, transpose, and multiplication.
+- Accessing any element takes **O(1)** time.
+- Traversing the entire matrix takes **O(rows × cols)** time.
+- Use `vector<vector<int>>` for dynamically sized matrices.
+
+---
+
+# 📌 Key Takeaways
+
+- ✅ 2D arrays efficiently represent matrices and tables.
+- ✅ Memory is contiguous despite the row-column view.
+- ✅ Nested loops are used for traversal.
+- ✅ Row-major order is important for memory layout and interview questions.
+- ✅ 2D arrays are widely used in graphics, games, scientific computing, and competitive programming.
+
+---
