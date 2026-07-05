@@ -2695,3 +2695,405 @@ Using `getline()` → ✔ Yes
 - ✅ Understanding C Strings is important for interviews, competitive programming, and system-level programming.
 
 ---
+# 📚 Chapter 4: `std::string` in C++
+
+---
+
+# 📖 Introduction
+
+`std::string` is a **Standard Template Library (STL)** class introduced in C++ to simplify string handling. Unlike character arrays, `std::string` automatically manages memory, supports dynamic resizing, and provides numerous built-in functions for efficient text manipulation.
+
+It is defined in the `<string>` header file and belongs to the `std` namespace.
+
+```cpp
+#include <string>
+using namespace std;
+```
+
+---
+
+# 🎯 Why Use `std::string`?
+
+Character arrays have several limitations:
+
+- Fixed size
+- Manual memory management
+- Risk of buffer overflow
+- Limited built-in functions
+
+`std::string` overcomes these issues by providing:
+
+- Dynamic resizing
+- Automatic memory management
+- Rich built-in functions
+- Easy concatenation and comparison
+- Safe string manipulation
+
+---
+
+# 📜 Declaration & Initialization
+
+## Declaration
+
+```cpp
+string name;
+```
+
+## Initialization
+
+```cpp
+string name = "Cassie";
+
+string city("Hyderabad");
+
+string stars(5,'*');
+```
+
+Output
+
+```text
+*****
+```
+
+---
+
+# 🏗 Memory Management
+
+Unlike character arrays, `std::string` automatically allocates and deallocates memory.
+
+```text
+String Object
+
+↓
+
+Stores Pointer
+
+↓
+
+Heap Memory
+
+↓
+
+Actual Characters
+```
+
+Whenever the string grows, memory is automatically reallocated.
+
+---
+
+# 📚 Constructors
+
+| Constructor | Example |
+|------------|---------|
+| Default | `string s;` |
+| From Literal | `string s="Hello";` |
+| Copy | `string s2(s1);` |
+| Repeated Character | `string s(5,'A');` |
+| Substring | `string s(str,2,4);` |
+
+---
+
+# 📏 Capacity Functions
+
+| Function | Description |
+|----------|-------------|
+| `size()` | Number of characters |
+| `length()` | Same as size() |
+| `capacity()` | Allocated memory |
+| `empty()` | Checks if empty |
+| `clear()` | Removes all characters |
+| `reserve()` | Reserves memory |
+| `shrink_to_fit()` | Reduces unused capacity |
+
+Example
+
+```cpp
+string s="Programming";
+
+cout<<s.length();
+cout<<s.capacity();
+```
+
+---
+
+# ✏ Character Access
+
+```cpp
+string s="Hello";
+
+cout<<s[0];
+
+cout<<s.at(1);
+
+cout<<s.front();
+
+cout<<s.back();
+```
+
+Output
+
+```text
+H
+e
+H
+o
+```
+
+---
+
+# 🔧 Modification Functions
+
+| Function | Purpose |
+|----------|---------|
+| `append()` | Add text |
+| `push_back()` | Add one character |
+| `pop_back()` | Remove last character |
+| `insert()` | Insert text |
+| `erase()` | Delete characters |
+| `replace()` | Replace substring |
+| `clear()` | Remove all characters |
+
+Example
+
+```cpp
+string s="Code";
+
+s.append("Chef");
+
+cout<<s;
+```
+
+Output
+
+```text
+CodeChef
+```
+
+---
+
+# 🔍 Searching Functions
+
+| Function | Purpose |
+|----------|---------|
+| `find()` | Find substring |
+| `rfind()` | Search from right |
+| `substr()` | Extract substring |
+| `compare()` | Compare strings |
+
+Example
+
+```cpp
+string s="Programming";
+
+cout<<s.find("gram");
+```
+
+Output
+
+```text
+3
+```
+
+---
+
+# 🔄 String Operations
+
+## Concatenation
+
+```cpp
+string a="Hello";
+
+string b="World";
+
+cout<<a+" "+b;
+```
+
+Output
+
+```text
+Hello World
+```
+
+---
+
+## Comparison
+
+```cpp
+if(a==b)
+```
+
+Lexicographical comparison
+
+```cpp
+if(a<b)
+```
+
+---
+
+## Iterating through String
+
+```cpp
+for(char c:s)
+    cout<<c<<" ";
+```
+
+Output
+
+```text
+H e l l o
+```
+
+---
+
+# 🌍 Applications
+
+- Text editors
+- Search engines
+- File handling
+- Compilers
+- Web development
+- Chat applications
+- Data processing
+- Competitive Programming
+
+---
+
+# 📈 Complexity
+
+| Operation | Complexity |
+|-----------|------------|
+| Access | O(1) |
+| size() | O(1) |
+| append() | O(n) |
+| insert() | O(n) |
+| erase() | O(n) |
+| find() | O(n) |
+| substr() | O(n) |
+| compare() | O(n) |
+
+Space Complexity
+
+```text
+O(n)
+```
+
+---
+
+# ⚖ Character Array vs `std::string`
+
+| Character Array | `std::string` |
+|-----------------|---------------|
+| Fixed Size | Dynamic Size |
+| Manual Memory | Automatic Memory |
+| Less Safe | Safer |
+| Few Functions | Rich Built-in Functions |
+| Buffer Overflow Possible | Much Safer |
+
+---
+
+# 👍 Advantages
+
+- Dynamic size
+- Easy to use
+- Automatic memory management
+- Rich library support
+- STL compatible
+- Safe operations
+
+---
+
+# 👎 Disadvantages
+
+- Slightly slower than raw character arrays
+- More memory overhead
+- Not ideal for very low-level programming
+
+---
+
+# 💡 Best Practices
+
+- Include `<string>` header.
+- Prefer `getline()` for input containing spaces.
+- Use `const string&` when passing large strings to functions.
+- Use `size()` instead of manually counting characters.
+- Avoid unnecessary string copies.
+
+---
+
+# 🧠 Interview Notes
+
+### Difference between `size()` and `length()`
+
+There is **no difference**.
+
+Both return the number of characters.
+
+---
+
+### Why is `std::string` preferred over Character Arrays?
+
+Because it
+
+- automatically manages memory,
+- resizes dynamically,
+- provides many useful functions,
+- reduces programming errors.
+
+---
+
+### Difference between `[]` and `at()`
+
+| `[]` | `at()` |
+|-------|---------|
+| No bounds checking | Performs bounds checking |
+| Faster | Safer |
+
+---
+
+# ❓ FAQs
+
+### Which header file contains `std::string`?
+
+```cpp
+<string>
+```
+
+---
+
+### Can `std::string` store spaces?
+
+✔ Yes
+
+```cpp
+getline(cin,str);
+```
+
+---
+
+### Is `std::string` mutable?
+
+✔ Yes, characters can be modified.
+
+---
+
+# 📝 Revision Notes
+
+- `std::string` is a dynamic string class.
+- Defined in `<string>`.
+- Automatically manages memory.
+- Supports concatenation, searching, insertion, deletion, and comparison.
+- `size()` and `length()` are identical.
+- Use `getline()` to read complete lines.
+- Prefer `std::string` over character arrays in modern C++.
+
+---
+
+# 📌 Key Takeaways
+
+- ✅ `std::string` is the standard way to handle text in modern C++.
+- ✅ It eliminates many problems associated with character arrays.
+- ✅ Rich built-in functions simplify string manipulation.
+- ✅ Dynamic memory allocation makes it flexible and safe.
+- ✅ Frequently asked in coding interviews and competitive programming.
+
+---
