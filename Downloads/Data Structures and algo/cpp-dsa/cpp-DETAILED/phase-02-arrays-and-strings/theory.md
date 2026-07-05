@@ -1683,3 +1683,369 @@ Final
 - ✅ Understanding traversal and insertion is essential before learning searching and sorting algorithms.
 
 ---
+
+---
+
+# ➖ Array Deletion
+
+## 📖 Introduction
+
+Deletion is the process of removing an element from an array. Since arrays store elements in **contiguous memory locations**, deleting an element creates an empty position. To maintain continuity, all subsequent elements are shifted one position to the left.
+
+> **Note:** Deletion reduces the **logical size** of the array, not its allocated memory.
+
+---
+
+## 📜 Algorithm
+
+1. Select the position to delete.
+2. Shift all elements after that position one place to the left.
+3. Decrease the logical size by one.
+
+### Flow
+
+```text
+Delete Element
+      │
+      ▼
+Shift Elements Left
+      │
+      ▼
+Decrease Size
+      │
+      ▼
+Updated Array
+```
+
+---
+
+## 💻 Example
+
+```cpp
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    int arr[10]={10,20,30,40,50};
+    int size=5;
+    int pos=2;
+
+    for(int i=pos;i<size-1;i++)
+        arr[i]=arr[i+1];
+
+    size--;
+
+    for(int i=0;i<size;i++)
+        cout<<arr[i]<<" ";
+}
+```
+
+### Output
+
+```text
+10 20 40 50
+```
+
+---
+
+## 📈 Complexity
+
+| Operation | Time |
+|-----------|------|
+| Delete at Beginning | O(n) |
+| Delete at Middle | O(n) |
+| Delete at End | O(1) |
+
+**Space Complexity:** `O(1)`
+
+---
+
+## 👍 Advantages
+
+- Simple implementation.
+- Preserves element order.
+- No extra memory required.
+
+---
+
+## 👎 Disadvantages
+
+- Expensive for large arrays.
+- Requires shifting elements.
+- Fixed-size arrays cannot shrink physically.
+
+---
+
+## 💡 Interview Tip
+
+**Q. Why is deletion in arrays slower than in linked lists?**
+
+**Answer:** Arrays require shifting elements after deletion, whereas linked lists only update pointers.
+
+---
+
+# 🔍 Searching
+
+## 📖 Introduction
+
+Searching is the process of finding whether a particular element exists in an array.
+
+---
+
+## Types of Searching
+
+### 1. Linear Search
+
+Checks each element one by one.
+
+### 2. Binary Search
+
+Works only on **sorted arrays** by repeatedly dividing the search space into halves.
+
+---
+
+# Linear Search
+
+## Algorithm
+
+1. Start from index `0`.
+2. Compare each element with the target.
+3. If found, return the index.
+4. Otherwise continue.
+5. If the loop ends, the element is not present.
+
+---
+
+## Flowchart
+
+```text
+Start
+   │
+   ▼
+Compare Current Element
+   │
+   ▼
+Found?
+ ┌──┴──┐
+ │     │
+Yes    No
+ │      │
+ ▼      ▼
+Return Next Element
+ Index     │
+      Repeat
+```
+
+---
+
+## Example
+
+```cpp
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    int arr[]={10,20,30,40,50};
+    int key=40;
+
+    for(int i=0;i<5;i++)
+    {
+        if(arr[i]==key)
+        {
+            cout<<"Found at "<<i;
+            return 0;
+        }
+    }
+
+    cout<<"Not Found";
+}
+```
+
+Output
+
+```text
+Found at 3
+```
+
+---
+
+## Binary Search (Introduction)
+
+Binary Search is a faster searching technique that works **only on sorted arrays**.
+
+Instead of checking every element, it repeatedly compares the middle element with the target and eliminates half of the remaining elements.
+
+Example
+
+```text
+10 20 30 40 50 60 70
+
+Target = 60
+
+Middle = 40
+
+60 > 40
+
+Search Right Half
+
+↓
+
+Middle = 60
+
+Found
+```
+
+### Complexity
+
+| Algorithm | Best | Worst |
+|-----------|------|--------|
+| Linear Search | O(1) | O(n) |
+| Binary Search | O(1) | O(log n) |
+
+---
+
+# 📋 Copying Arrays
+
+## 📖 Introduction
+
+Copying an array means creating another array containing the same elements in the same order.
+
+---
+
+## Methods
+
+### Using Loop
+
+```cpp
+int arr[]={1,2,3,4,5};
+int copy[5];
+
+for(int i=0;i<5;i++)
+    copy[i]=arr[i];
+```
+
+### Using `std::copy()`
+
+```cpp
+copy(arr,arr+5,copyArr);
+```
+
+(Header: `<algorithm>`)
+
+### Using `memcpy()`
+
+```cpp
+memcpy(copyArr,arr,sizeof(arr));
+```
+
+(Header: `<cstring>`)
+
+---
+
+## Complexity
+
+| Method | Time |
+|---------|------|
+| Loop | O(n) |
+| std::copy() | O(n) |
+| memcpy() | O(n) |
+
+---
+
+## Best Practices
+
+- Prefer `std::copy()` in modern C++.
+- Use `memcpy()` only for trivially copyable data types.
+- Ensure the destination array has enough capacity.
+
+---
+
+# 📤 Passing Arrays to Functions
+
+## 📖 Introduction
+
+When an array is passed to a function, it **decays into a pointer** to its first element. Therefore, the function receives the address of the first element, not a copy of the entire array.
+
+---
+
+## Syntax
+
+```cpp
+void display(int arr[],int n);
+```
+
+Equivalent to
+
+```cpp
+void display(int *arr,int n);
+```
+
+---
+
+## Example
+
+```cpp
+#include<iostream>
+using namespace std;
+
+void display(int arr[],int n)
+{
+    for(int i=0;i<n;i++)
+        cout<<arr[i]<<" ";
+}
+
+int main()
+{
+    int arr[]={10,20,30,40,50};
+
+    display(arr,5);
+}
+```
+
+Output
+
+```text
+10 20 30 40 50
+```
+
+---
+
+## Why Pass Size Separately?
+
+Inside the function, the array becomes a pointer.
+
+Therefore,
+
+```cpp
+sizeof(arr)
+```
+
+returns the size of the pointer, **not** the size of the original array.
+
+Always pass the array size as a separate parameter.
+
+---
+
+## Complexity
+
+Passing an array to a function takes **O(1)** time because only the address is passed, not the entire array.
+
+---
+
+## 📌 Quick Revision
+
+- Array deletion shifts elements left.
+- Linear Search works on any array.
+- Binary Search requires a sorted array.
+- Arrays can be copied using loops, `std::copy()`, or `memcpy()`.
+- Arrays decay to pointers when passed to functions.
+- Always pass the array size separately.
+- Deletion: **O(n)**
+- Linear Search: **O(n)**
+- Binary Search: **O(log n)**
+- Copying: **O(n)**
+- Passing Arrays: **O(1)**
+
+---
