@@ -3097,3 +3097,373 @@ getline(cin,str);
 - ✅ Frequently asked in coding interviews and competitive programming.
 
 ---
+# 📚 Chapter 5: Array Algorithms
+
+---
+
+# 📖 Introduction
+
+Array algorithms are techniques used to efficiently process, manipulate, and solve problems involving arrays. They form the foundation of Data Structures & Algorithms (DSA) and are frequently asked in coding interviews, competitive programming, and technical assessments.
+
+The most common array algorithms include searching, reversing, rotating, prefix sums, frequency counting, and introductory optimization techniques.
+
+---
+
+# 🎯 Why Learn Array Algorithms?
+
+Array algorithms help to:
+
+- Search elements efficiently.
+- Rearrange data.
+- Optimize repeated calculations.
+- Solve interview problems.
+- Improve logical thinking.
+- Build a strong DSA foundation.
+
+---
+
+# 🔍 1. Linear Search
+
+Linear Search checks every element one by one until the target is found.
+
+### Example
+
+```cpp
+int arr[]={10,20,30,40,50};
+int key=40;
+
+for(int i=0;i<5;i++)
+{
+    if(arr[i]==key)
+    {
+        cout<<"Found";
+        break;
+    }
+}
+```
+
+### Complexity
+
+| Best | Average | Worst |
+|------|----------|--------|
+| O(1) | O(n) | O(n) |
+
+---
+
+# ⚡ 2. Binary Search (Introduction)
+
+Binary Search works **only on sorted arrays**. It repeatedly divides the search space into half.
+
+Example
+
+```text
+10 20 30 40 50 60 70
+
+Target = 60
+
+↓
+
+Middle = 40
+
+↓
+
+Search Right Half
+
+↓
+
+Found
+```
+
+### Complexity
+
+| Best | Average | Worst |
+|------|----------|--------|
+| O(1) | O(log n) | O(log n) |
+
+---
+
+# 🔄 3. Reverse an Array
+
+Reverse changes the order of elements.
+
+Example
+
+```text
+1 2 3 4 5
+
+↓
+
+5 4 3 2 1
+```
+
+### Two Pointer Approach
+
+```cpp
+int left=0,right=n-1;
+
+while(left<right)
+{
+    swap(arr[left],arr[right]);
+    left++;
+    right--;
+}
+```
+
+### Complexity
+
+Time: **O(n)**
+
+Space: **O(1)**
+
+---
+
+# 🔃 4. Rotate an Array
+
+Rotation shifts elements left or right.
+
+Example
+
+```text
+1 2 3 4 5
+
+Left Rotate
+
+2 3 4 5 1
+```
+
+```text
+1 2 3 4 5
+
+Right Rotate
+
+5 1 2 3 4
+```
+
+### Complexity
+
+Time: **O(n)**
+
+Space: **O(1)** *(using reversal algorithm)*
+
+---
+
+# 📊 5. Frequency Count
+
+Frequency counting determines how many times each element appears.
+
+Example
+
+```text
+Array
+
+1 2 2 3 3 3
+
+Frequency
+
+1 → 1
+
+2 → 2
+
+3 → 3
+```
+
+Using Hash Map
+
+```cpp
+unordered_map<int,int> freq;
+
+for(int x:arr)
+    freq[x]++;
+```
+
+### Complexity
+
+Time: **O(n)**
+
+Space: **O(n)**
+
+---
+
+# ➕ 6. Prefix Sum
+
+Prefix Sum stores cumulative sums to answer range sum queries efficiently.
+
+Example
+
+```text
+Array
+
+2 4 6 8
+
+Prefix
+
+2 6 12 20
+```
+
+Formula
+
+```text
+prefix[i]=prefix[i-1]+arr[i]
+```
+
+Applications
+
+- Range Sum Queries
+- Competitive Programming
+- Dynamic Programming
+
+### Complexity
+
+Construction → **O(n)**
+
+Query → **O(1)**
+
+---
+
+# 🚀 7. Kadane's Algorithm (Introduction)
+
+Kadane's Algorithm finds the **Maximum Sum Subarray**.
+
+Example
+
+```text
+-2 1 -3 4 -1 2 1
+
+Maximum Sum = 6
+```
+
+Idea
+
+- Extend current subarray if beneficial.
+- Otherwise start a new subarray.
+
+### Complexity
+
+Time: **O(n)**
+
+Space: **O(1)**
+
+---
+
+# 👥 8. Two Pointer Technique (Introduction)
+
+Uses two indices moving toward each other.
+
+Applications
+
+- Reverse Array
+- Pair Sum
+- Remove Duplicates
+- Sorted Arrays
+
+Example
+
+```cpp
+left=0;
+
+right=n-1;
+```
+
+### Complexity
+
+Generally
+
+```text
+O(n)
+```
+
+---
+
+# 📈 Complexity Summary
+
+| Algorithm | Time | Space |
+|------------|------|-------|
+| Linear Search | O(n) | O(1) |
+| Binary Search | O(log n) | O(1) |
+| Reverse Array | O(n) | O(1) |
+| Rotate Array | O(n) | O(1) |
+| Frequency Count | O(n) | O(n) |
+| Prefix Sum | O(n) | O(n) |
+| Kadane | O(n) | O(1) |
+| Two Pointer | O(n) | O(1) |
+
+---
+
+# 🌍 Applications
+
+- Search Engines
+- Database Queries
+- Image Processing
+- Data Analytics
+- Competitive Programming
+- Financial Analysis
+- Scheduling Systems
+
+---
+
+# 💡 Best Practices
+
+- Choose Binary Search only for sorted arrays.
+- Use Prefix Sum for repeated range queries.
+- Use Hash Maps for frequency counting.
+- Prefer Two Pointer technique when possible.
+- Analyze time complexity before coding.
+
+---
+
+# 🧠 Interview Notes
+
+### Most Asked Questions
+
+- Reverse an Array
+- Rotate an Array
+- Maximum Subarray Sum
+- Move Zeroes
+- Two Sum
+- Majority Element
+- Best Time to Buy and Sell Stock
+- Prefix Sum Problems
+
+---
+
+# ❓ FAQs
+
+### Why is Binary Search faster?
+
+Because it eliminates half of the search space in every iteration.
+
+---
+
+### When should Prefix Sum be used?
+
+Whenever multiple range sum queries are performed.
+
+---
+
+### Why is Kadane's Algorithm important?
+
+It solves Maximum Subarray Sum in **O(n)** instead of **O(n²)**.
+
+---
+
+# 📝 Revision Notes
+
+- Linear Search works on all arrays.
+- Binary Search requires sorted arrays.
+- Reverse uses Two Pointers.
+- Rotate shifts elements.
+- Prefix Sum speeds up range queries.
+- Kadane finds maximum subarray sum.
+- Frequency Count uses Hash Maps.
+
+---
+
+# 📌 Key Takeaways
+
+- ✅ Array algorithms are the building blocks of DSA.
+- ✅ Binary Search is one of the fastest searching algorithms.
+- ✅ Prefix Sum and Kadane are among the most frequently asked interview topics.
+- ✅ Two Pointer technique simplifies many array problems.
+- ✅ Mastering these algorithms greatly improves problem-solving skills.
+
+---
