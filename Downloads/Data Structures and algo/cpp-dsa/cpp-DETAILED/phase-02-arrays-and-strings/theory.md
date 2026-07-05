@@ -3467,3 +3467,355 @@ It solves Maximum Subarray Sum in **O(n)** instead of **O(n²)**.
 - ✅ Mastering these algorithms greatly improves problem-solving skills.
 
 ---
+# 📚 Chapter 6: String Algorithms
+
+---
+
+# 📖 Introduction
+
+String algorithms are techniques used to process, analyze, and manipulate text efficiently. They are widely used in search engines, text editors, compilers, cybersecurity, bioinformatics, competitive programming, and coding interviews.
+
+Understanding these algorithms improves problem-solving skills and prepares you for advanced topics like pattern matching and dynamic programming.
+
+---
+
+# 🎯 Why Learn String Algorithms?
+
+String algorithms help to:
+
+- Search text efficiently.
+- Validate user input.
+- Compare strings.
+- Process large text data.
+- Solve interview problems.
+- Build advanced applications like search engines and spell checkers.
+
+---
+
+# 🔄 1. Reverse a String
+
+Reversing a string means changing the order of its characters.
+
+### Example
+
+```text
+Original
+
+Programming
+
+↓
+
+Reversed
+
+gnimmargorP
+```
+
+### Using Two Pointers
+
+```cpp
+string str="Programming";
+
+int left=0,right=str.length()-1;
+
+while(left<right)
+{
+    swap(str[left],str[right]);
+    left++;
+    right--;
+}
+
+cout<<str;
+```
+
+### Complexity
+
+| Time | Space |
+|------|-------|
+| O(n) | O(1) |
+
+---
+
+# 🔍 2. Palindrome
+
+A palindrome reads the same from both directions.
+
+Examples
+
+```text
+madam ✔
+
+racecar ✔
+
+level ✔
+
+hello ✖
+```
+
+### Approach
+
+Compare the first and last characters while moving toward the center.
+
+### Complexity
+
+Time: **O(n)**
+
+Space: **O(1)**
+
+---
+
+# 🔤 3. Anagram
+
+Two strings are anagrams if they contain the same characters with the same frequency, regardless of order.
+
+Example
+
+```text
+listen
+
+silent ✔
+
+triangle
+
+integral ✔
+```
+
+### Common Approaches
+
+- Sorting both strings
+- Frequency counting using arrays or hash maps
+
+### Complexity
+
+Sorting Approach → **O(n log n)**
+
+Frequency Array → **O(n)**
+
+---
+
+# 📊 4. Character Frequency
+
+Counts the number of occurrences of each character.
+
+Example
+
+```text
+banana
+
+a → 3
+
+b → 1
+
+n → 2
+```
+
+### Using Hash Map
+
+```cpp
+unordered_map<char,int> freq;
+
+for(char ch:str)
+    freq[ch]++;
+```
+
+### Complexity
+
+Time → **O(n)**
+
+Space → **O(n)**
+
+---
+
+# ✂ 5. Tokenization
+
+Tokenization is the process of splitting a string into smaller parts (tokens) using delimiters.
+
+Example
+
+```text
+Input
+
+C++,Python,Java
+
+↓
+
+Tokens
+
+C++
+
+Python
+
+Java
+```
+
+### Applications
+
+- CSV Processing
+- Command Parsing
+- Text Analysis
+- Compilers
+
+---
+
+# 🔎 6. Pattern Matching (Introduction)
+
+Pattern Matching determines whether a pattern exists inside another string.
+
+Example
+
+```text
+Text
+
+Programming in C++
+
+Pattern
+
+gram
+
+↓
+
+Found ✔
+```
+
+### Basic Methods
+
+- Naive Search
+- `find()` Function
+- KMP (Advanced)
+- Rabin-Karp (Advanced)
+
+---
+
+# 🚀 7. KMP Algorithm (Introduction)
+
+The **Knuth-Morris-Pratt (KMP)** algorithm improves pattern searching by avoiding unnecessary comparisons using the **LPS (Longest Prefix Suffix)** array.
+
+### Complexity
+
+| Time | Space |
+|------|-------|
+| O(n + m) | O(m) |
+
+Where:
+
+- `n` = Length of text
+- `m` = Length of pattern
+
+---
+
+# ⚡ 8. Rabin-Karp Algorithm (Introduction)
+
+Rabin-Karp uses **Hashing** to search for patterns efficiently.
+
+Instead of comparing characters directly, it compares hash values.
+
+Applications
+
+- Multiple Pattern Searching
+- Plagiarism Detection
+- DNA Sequence Matching
+
+### Complexity
+
+Average → **O(n + m)**
+
+Worst → **O(n × m)**
+
+---
+
+# 📈 Complexity Summary
+
+| Algorithm | Time | Space |
+|-----------|------|-------|
+| Reverse String | O(n) | O(1) |
+| Palindrome Check | O(n) | O(1) |
+| Anagram | O(n) / O(n log n) | O(n) |
+| Character Frequency | O(n) | O(n) |
+| Tokenization | O(n) | O(n) |
+| Pattern Matching (Naive) | O(n×m) | O(1) |
+| KMP | O(n+m) | O(m) |
+| Rabin-Karp | O(n+m)* | O(1) |
+
+---
+
+# 🌍 Real-World Applications
+
+- Search Engines
+- Auto-complete Systems
+- Spell Checkers
+- Chat Applications
+- Text Editors
+- DNA Sequence Analysis
+- Cybersecurity
+- Compilers
+- Natural Language Processing (NLP)
+
+---
+
+# 💡 Best Practices
+
+- Use `std::string` instead of character arrays.
+- Prefer frequency counting for anagram problems.
+- Use KMP for large pattern-matching tasks.
+- Normalize text (lowercase/remove spaces) before comparisons.
+- Analyze time complexity before selecting an algorithm.
+
+---
+
+# 🧠 Interview Notes
+
+### Frequently Asked Questions
+
+- Reverse a String
+- Check Palindrome
+- Valid Anagram
+- First Unique Character
+- Longest Common Prefix
+- Implement `strStr()`
+- Longest Substring Without Repeating Characters
+- Group Anagrams
+
+---
+
+# ❓ FAQs
+
+### Which algorithm is best for pattern matching?
+
+- Small input → Naive Search
+- Large input → KMP
+- Multiple patterns → Rabin-Karp
+
+---
+
+### Which algorithm is best for checking anagrams?
+
+Using a frequency array or hash map gives **O(n)** time complexity.
+
+---
+
+### Why is KMP faster than Naive Search?
+
+Because it avoids rechecking previously matched characters using the **LPS array**.
+
+---
+
+# 📝 Revision Notes
+
+- Reverse uses the Two Pointer technique.
+- Palindrome compares characters from both ends.
+- Anagrams have the same character frequencies.
+- Frequency counting uses Hash Maps or Arrays.
+- Tokenization splits text into meaningful parts.
+- KMP and Rabin-Karp are advanced pattern-matching algorithms.
+- String algorithms are among the most frequently asked interview topics.
+
+---
+
+# 📌 Key Takeaways
+
+- ✅ String algorithms are fundamental in DSA and Competitive Programming.
+- ✅ Reverse, Palindrome, and Anagram are interview favorites.
+- ✅ KMP and Rabin-Karp optimize pattern searching.
+- ✅ Frequency counting simplifies many string problems.
+- ✅ Mastering these algorithms builds a strong foundation for advanced text processing and interview preparation.
+
+---
