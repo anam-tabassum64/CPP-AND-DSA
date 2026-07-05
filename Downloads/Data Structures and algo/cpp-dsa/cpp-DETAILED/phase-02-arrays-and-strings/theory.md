@@ -2357,3 +2357,341 @@ Because C++ stores array elements row by row in contiguous memory.
 - ✅ 2D arrays are widely used in graphics, games, scientific computing, and competitive programming.
 
 ---
+
+# 📚 Chapter 3: Character Arrays & C Strings
+
+---
+
+# 📖 Introduction
+
+A **Character Array** is an array whose elements are of type `char`. It is used to store a sequence of characters such as words, sentences, or symbols.
+
+A **C String** is a character array that ends with a special character called the **Null Character (`'\0'`)**, which marks the end of the string.
+
+Character arrays were the primary way of handling text before the introduction of `std::string` in C++.
+
+---
+
+# 🎯 Why Do We Need Character Arrays?
+
+Character arrays are useful for:
+
+- Storing text and words
+- Processing user input
+- File handling
+- Command-line arguments
+- Working with legacy C libraries
+- String manipulation
+
+---
+
+# 📜 Declaration
+
+### Character Array
+
+```cpp
+char name[10];
+```
+
+### C String
+
+```cpp
+char name[]="Cassie";
+```
+
+---
+
+# 📝 Initialization
+
+```cpp
+char city[]="Delhi";
+```
+
+Equivalent to
+
+```cpp
+char city[]={'D','e','l','h','i','\0'};
+```
+
+---
+
+# 💾 Memory Representation
+
+```cpp
+char name[]="Code";
+```
+
+Stored in memory as
+
+```text
+Index : 0   1   2   3   4
+
+Value : C   o   d   e  \0
+```
+
+The **Null Character (`'\0'`)** tells the compiler where the string ends.
+
+Without it, the program may print garbage values.
+
+---
+
+# ⚠ Null Character
+
+```cpp
+'\0'
+```
+
+- ASCII Value = **0**
+- Indicates the end of a C String.
+- Automatically added when using string literals.
+
+Example
+
+```cpp
+char str[]="Hello";
+```
+
+Actually stored as
+
+```text
+H e l l o \0
+```
+
+---
+
+# ✏ Accessing Characters
+
+Characters are accessed using indices.
+
+```cpp
+char word[]="Hello";
+
+cout<<word[0];
+cout<<word[4];
+```
+
+Output
+
+```text
+H
+o
+```
+
+---
+
+# 🔄 Traversing a Character Array
+
+```cpp
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    char str[]="Programming";
+
+    for(int i=0;str[i]!='\0';i++)
+        cout<<str[i]<<" ";
+}
+```
+
+Output
+
+```text
+P r o g r a m m i n g
+```
+
+---
+
+# 📚 Common C String Functions
+
+Header File
+
+```cpp
+#include<cstring>
+```
+
+| Function | Description |
+|----------|-------------|
+| `strlen()` | Returns string length |
+| `strcpy()` | Copies one string to another |
+| `strcat()` | Concatenates two strings |
+| `strcmp()` | Compares two strings |
+| `strchr()` | Finds first occurrence of a character |
+| `strstr()` | Finds a substring |
+
+---
+
+## Example
+
+```cpp
+#include<iostream>
+#include<cstring>
+using namespace std;
+
+int main()
+{
+    char str[]="Computer";
+
+    cout<<strlen(str);
+}
+```
+
+Output
+
+```text
+8
+```
+
+---
+
+# ⚠ Buffer Overflow
+
+A buffer overflow occurs when input exceeds the array size.
+
+Example
+
+```cpp
+char name[5];
+
+cin>>name;
+```
+
+Input
+
+```text
+Programming
+```
+
+This may overwrite memory and cause undefined behavior.
+
+Use larger arrays or `std::string` to avoid this problem.
+
+---
+
+# 🌍 Applications
+
+- Password validation
+- Text processing
+- File handling
+- Lexical analysis
+- Command-line arguments
+- Embedded systems
+- Legacy C programs
+
+---
+
+# 📈 Complexity
+
+| Operation | Time |
+|-----------|------|
+| Access Character | O(1) |
+| Traversal | O(n) |
+| strlen() | O(n) |
+| strcpy() | O(n) |
+| strcat() | O(n) |
+| strcmp() | O(n) |
+
+Space Complexity
+
+```text
+O(n)
+```
+
+---
+
+# 👍 Advantages
+
+- Simple and memory efficient.
+- Fast character access.
+- Compatible with C libraries.
+- Suitable for low-level programming.
+
+---
+
+# 👎 Disadvantages
+
+- Fixed size.
+- Manual memory management.
+- Buffer overflow risk.
+- Limited built-in functionality compared to `std::string`.
+
+---
+
+# 💡 Best Practices
+
+- Always leave space for the null character.
+- Include `<cstring>` for string functions.
+- Validate user input length.
+- Prefer `std::string` for modern C++ applications.
+- Avoid deprecated functions like `gets()`.
+
+---
+
+# 🧠 Interview Notes
+
+### Difference between Character Array and C String
+
+| Character Array | C String |
+|-----------------|----------|
+| Array of characters | Character array ending with `'\0'` |
+| May not contain null character | Always ends with `'\0'` |
+| Not necessarily a string | Represents a valid string |
+
+---
+
+### Difference between C String and `std::string`
+
+| C String | std::string |
+|-----------|-------------|
+| Fixed size | Dynamic size |
+| Uses `char[]` | Uses `string` class |
+| Manual operations | Rich built-in functions |
+| Less safe | Safer and easier |
+
+---
+
+# ❓ FAQs
+
+### Why is the null character important?
+
+It marks the end of the string. Without it, functions like `strlen()` and `cout` cannot determine where the string ends.
+
+---
+
+### Which header contains string functions?
+
+```cpp
+<cstring>
+```
+
+---
+
+### Can a character array store spaces?
+
+Using `cin` → ❌ No
+
+Using `getline()` → ✔ Yes
+
+---
+
+# 📝 Revision Notes
+
+- Character arrays store characters.
+- C Strings always end with `'\0'`.
+- `<cstring>` provides built-in string functions.
+- `strlen()` returns the string length.
+- Character arrays have fixed size.
+- Buffer overflow occurs when input exceeds array capacity.
+- Prefer `std::string` for modern C++ programs.
+
+---
+
+# 📌 Key Takeaways
+
+- ✅ Character arrays are the foundation of text handling in C/C++.
+- ✅ Every C String ends with a null character.
+- ✅ `<cstring>` provides useful string manipulation functions.
+- ✅ Character arrays are fast but less safe than `std::string`.
+- ✅ Understanding C Strings is important for interviews, competitive programming, and system-level programming.
+
+---
