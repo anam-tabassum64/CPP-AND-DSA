@@ -701,7 +701,6 @@ indicates hexadecimal notation.
 - Required for pointers.
 - Useful for dynamic memory allocation.
 - Enables efficient function calls.
-- Used in system programming.
 
 ---
 
