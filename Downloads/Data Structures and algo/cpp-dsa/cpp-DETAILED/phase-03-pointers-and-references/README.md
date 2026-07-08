@@ -6,7 +6,6 @@
 
 # 📖 Overview
 
-Welcome to **Phase 3** of the C++ Roadmap!
 
 After learning the fundamentals of C++ in **Phase 1** and mastering **Arrays, Strings, and Pattern Printing** in **Phase 2**, it's time to explore one of the most important concepts in C++ — **Pointers & References**.
 
